@@ -16,7 +16,7 @@ def lst_service_price():
     window_lst_service_price.resizable(width=False, height=False)
 
     label = Label(window_lst_service_price, text='Список услуг их цен, себестоимости, прибыли', font=('Arial', 20, 'bold'), bg='orange', fg='white').pack()
-    scroll_text = ScrolledText(window_lst_service_price, width=200, height=200, font=('Courier New', 20, 'bold'), bg='black', fg='white')
+    scroll_text = ScrolledText(window_lst_service_price, width=200, height=200, font=('Courier New', 18, 'bold'), bg='black', fg='white')
     scroll_text.insert('1.0', bdb.bd_service())
     scroll_text.configure(state='disabled') #Запрещаем заменять текст
     scroll_text.pack()

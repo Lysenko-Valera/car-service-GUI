@@ -2,14 +2,20 @@ from tkinter import Entry, Label, Tk, Button, Toplevel
 from random import choice
 from tkinter import messagebox
 import sqlite3 as sql
+from PIL import ImageTk, Image
 
-from control import control_window
 
-#СОЗДАНИЕ ОКНА НАЧАЛО
 window_entry = Tk() #создаем окно входа
 window_entry.title('Вход в систему')
-window_entry.geometry('1000x700')
+window_entry.geometry('750x700')
 window_entry.resizable(width=False, height=False)
+
+img = Image.open('img_and_gif/key_logo_entry_window.JPG')
+img = img.resize((750, 700))
+img_photo = ImageTk.PhotoImage(img)
+
+img_lablel = Label(window_entry, image=img_photo)
+img_lablel.place(x=0, y=0)
 
 label = Label(window_entry, text='Доброго пожаловать в систему.',
                  font=('Arial', 35, 'bold'), bg='orange').pack()
@@ -25,10 +31,8 @@ label = Label(window_entry, text='Введите пароль:',
 
 password_input = Entry(window_entry, font=('Arial', 20), width=25, justify='left')
 password_input.pack()
-#СОЗДАНИЕ ОКНА КОНЕЦ
 
 
-#КАПЧА НАЧАЛО
 dict_capcha = {'68ㄥ9ᄅ': '98762', '6ㄥƐᄅ8': '97328', '9ㄥㄥƐᄅ': '67732', 'ᄅᄅ98Ɩ': '22681', 'ㄣ8ㄣᄅㄥ': '48427'} #Капча, цифры которые надо ввести в правильном порядке
 list_capcha = ['68ㄥ9ᄅ', '6ㄥƐᄅ8', '9ㄥㄥƐᄅ', 'ᄅᄅ98Ɩ', 'ㄣ8ㄣᄅㄥ'] #список символов которые должен ввести правильно
 

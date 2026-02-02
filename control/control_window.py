@@ -2,6 +2,8 @@ from tkinter import Label, Button, Toplevel, Tk
 from tkinter.constants import CENTER
 import control.button_control as bcntr
 import control.bd_button_control as bd_bctr
+import diagram.profit_diagram as profit_diagram
+
 
 def agree_next_month():
     """Создаем окно где есть только label и button по нажатю на кнопку сохраняються данные в бд"""
@@ -50,13 +52,12 @@ def control_window():
 
     label = Label(window_cntr, text='Бизнес организация: ', font=('Arial', 25, 'bold'), bg='black', fg='white').place(x=0, y=290)
 
-    button_del_service = button_help_cntr('Рентабельность', None).place(x=0, y=324)
+    button_del_service = button_help_cntr('Рентабельность', profit_diagram.profit_diagram).place(x=0, y=324)
 
-    button_del_service = button_help_cntr('Убыль', None).place(relx=0.5, y=365, anchor=CENTER)
+    button_next_month = Button(window_cntr, text='Переход месяца', command=agree_next_month,
+                               font=('Arial', 26, 'bold'), bg='red', fg='black',  width=18, height=2).place(relx=0.5, y=365, anchor=CENTER)
 
-    button_del_service = button_help_cntr('Выплаты рабочим', None).place(x=1095, y=330)
+    button_del_service = button_help_cntr('Выплаты рабочим', profit_diagram.pay_workers_diagram).place(x=1095, y=330)
 
-    button_next_month = Button(window_cntr, text='Следующий месяц', command=agree_next_month,
-                           font=('Arial', 40, 'bold'), width=18, bg='red', fg='black').place(relx=0.5, y=480, anchor=CENTER)
 
 

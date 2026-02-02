@@ -131,7 +131,7 @@ def see_active_order():
 
     label = Label(window_see_active_order, text='Просмотр активных заказов', font=('Arial', 22, 'bold'), bg='orange', fg='black').pack()
 
-    scroll_text = ScrolledText(window_see_active_order, width=200, height=200, font=('Courier New', 12, 'bold'),
+    scroll_text = ScrolledText(window_see_active_order, width=200, height=200, font=('Courier New', 10, 'bold'),
                                bg='black', fg='white')
     scroll_text.insert('1.0', bdaw.bd_see_active_order())
     scroll_text.configure(state='disabled')
