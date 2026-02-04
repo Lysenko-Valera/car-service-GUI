@@ -1,12 +1,12 @@
 from tkinter import Toplevel, Label, Button, Entry
-import control as bdb
+import control.db_button_control as bdb
 
 
 def button_add_admin():
     """Создаем окно где заполняем поля для добавления администратора в бд"""
     window_butt_add_admin = Toplevel()
     window_butt_add_admin.title('Добавление администратора')
-    window_butt_add_admin.geometry('1100x500')
+    window_butt_add_admin.geometry('1200x600')
     window_butt_add_admin.resizable(width=False, height=False)
 
     label = Label(window_butt_add_admin, text='Для добавления администратора заполните следующие поля',
@@ -46,10 +46,10 @@ def button_add_admin():
         zp_admin = entry_zp_admin.get()
         prize_admin = entry_prize_admin.get()
 
-        bdb.bd_add_admin(int(id_admin), str(name_admin), login_admin, password_admin, int(zp_admin), int(prize_admin))
+        bdb.bd_add_admin(int(id_admin), str(name_admin), str(login_admin), str(password_admin), int(zp_admin), int(prize_admin))
 
     button_agree_admin_add = Button(window_butt_add_admin, text='Создать',
-    command=button_create_admin, font=('Arial', 40, 'bold'), bg='lime', fg='white').pack()
+    command=button_create_admin, font=('Arial', 40, 'bold'), bg='lime', fg='black').pack()
 
 
 def button_del_admin():
@@ -71,4 +71,4 @@ def button_del_admin():
         bdb.bd_del_admin(int(del_id_admin))
 
     button_del_admin = Button(window_butt_del_admin, text='Удалить', command=button_help_del,
-                              font=('Arial', 40, 'bold'), bg='red', fg='white').pack()
+                              font=('Arial', 40, 'bold'), bg='red', fg='black').pack()

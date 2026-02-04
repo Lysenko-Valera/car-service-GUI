@@ -1,5 +1,5 @@
 from tkinter import Toplevel, Label, Button, Entry
-import control as bdb
+import control.db_button_control as bdb
 
 
 def button_add_mechanic():
@@ -49,7 +49,7 @@ def button_add_mechanic():
         bdb.bd_add_mechanic(int(id_mechanic), str(name_mechanic), str(special_mechanic), int(experience_mechanic), int(zp_mechanic), int(prize_mechanic))
 
     button_agree_admin_add = Button(window_butt_add_mechanic, text='Создать',
-    command=button_create_mechanic, font=('Arial', 40, 'bold'), bg='lime', fg='white').pack()
+    command=button_create_mechanic, font=('Arial', 40, 'bold'), bg='lime', fg='black').pack()
 
 
 def button_del_mechanic():
@@ -71,4 +71,4 @@ def button_del_mechanic():
         bdb.bd_del_mechanic(int(del_id_mechanic))
 
     button_del_mechanic = Button(window_butt_del_mechanic, text='Удалить', command=button_help_del_mechanic,
-                              font=('Arial', 40, 'bold'), bg='red', fg='white').pack()
+                              font=('Arial', 40, 'bold'), bg='red', fg='black').pack()

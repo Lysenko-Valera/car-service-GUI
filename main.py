@@ -18,7 +18,7 @@ img_photo = ImageTk.PhotoImage(img)
 img_label = Label(window_entry, image=img_photo)
 img_label.place(x=0, y=0)
 
-label = Label(window_entry, text='Доброго пожаловать в систему.',
+label = Label(window_entry, text='Добро пожаловать в систему.',
                  font=('Arial', 35, 'bold'), bg='orange').pack()
 
 label = Label(window_entry, text='Введите логин:',
@@ -76,17 +76,40 @@ def capcha():
 #КАПЧА КОНЕЦ
 
 
+file_in_sql = ['active_order_table.db', 'admin_table.db', 'completion_order_table.db', 'mechanic_table.db',
+               'month_data.db', 'service_table.db']
+
+if os.path.isdir('sql'):
+    for i in file_in_sql: #Перебраем файлы, если они находяться
+        # в директории sql, то ничего не делаем, иначе создаем файл
+        if i in os.listdir('sql'):
+            pass
+        else:
+            open('sql/' + i, 'w').close()
+else:
+    os.mkdir('sql') #если папки sql нет создаем ее и добавляем нужные файлы
+    for i in file_in_sql:
+        open('sql/' + i, 'w').close()
+
+
 with sql.connect('sql/admin_table.db') as con:
     cursor = con.cursor()
+    try:
+        cursor.execute('''CREATE TABLE IF NOT EXISTS admin_table(id_admin INT, name_admin TEXT, login_admin TEXT,
+         password_admin TEXT, zp_admin INT, prize_admin INT);''')
+        cursor.execute('''SELECT login_admin FROM admin_table;''')
+        result_login = cursor.fetchall()
+        cursor.execute('''SELECT password_admin FROM admin_table;''')
+        result_password = cursor.fetchall()
+    except Exception:
+        messagebox.showerror('Ошибка', 'Произошла ошибка при обращении к базе данных')
 
-    cursor.execute('''SELECT login_admin FROM admin_table''')
-    result_login = cursor.fetchall()
-    cursor.execute('''SELECT password_admin FROM admin_table''')
-    result_password = cursor.fetchall()
-
-    login_dict = list(map(list, result_login))
-    password_dict = list(map(list, result_password))
-    dict_password_login = {''.join(login): ''.join(password) for login, password in zip(login_dict, password_dict)}
+    if result_login and result_password:
+        login_dict = list(map(list, result_login))
+        password_dict = list(map(list, result_password))
+        dict_password_login = {''.join(login): ''.join(password) for login, password in zip(login_dict, password_dict)}
+    else:
+        pass
 
 count = 4
 
@@ -113,18 +136,6 @@ def check_password():
 button_entry = Button(window_entry, text='Войти', command=check_password, font=('Arial', 50, 'bold'), bg='lime')
 button_entry.pack()
 
-file_in_sql = ['active_order_table.db', 'admin_table.db', 'completion_order_table.db', 'mechanic_table.db',
-               'month_data.db', 'service_table.db']
 
-if os.path.isdir(''):
-    for i in file_in_sql:
-        if i in os.listdir(''):
-            pass
-        else:
-            open('sql/' + i, 'w').close()
-    if __name__ == '__main__':
-        window_entry.mainloop()
-else:
-    os.mkdir('')
-    for i in file_in_sql:
-        open('sql/' + i, 'w').close()
+if __name__ == '__main__':
+    window_entry.mainloop()

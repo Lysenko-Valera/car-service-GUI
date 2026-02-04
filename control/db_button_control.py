@@ -72,6 +72,7 @@ def bd_add_mechanic(id_mechanic: int, name_mechanic: str, special_mechanic: str,
             experience_mechanic, zp_mechanic, prize_mechanic, income) 
             VALUES (?, ?, ?, ?, ?, ?, ?);''', (id_mechanic, name_mechanic, special_mechanic,
                                                experience_mechanic, zp_mechanic, prize_mechanic, 0))
+            messagebox.showinfo('Информирование', 'Механик был добавлен')
         except Exception:
             messagebox.showerror('Ошибка', 'Произошла ошибка при обращении к базе данных')
 
@@ -112,8 +113,9 @@ def bd_add_admin(id_admin: int, name_admin: str, login_admin: str, password_admi
 
             cursor.execute(f'''INSERT INTO admin_table(id_admin, name_admin, login_admin, password_admin, zp_admin,
             prize_admin) VALUES (?, ?, ?, ?, ?, ?);''', (id_admin, name_admin, login_admin, password_admin, zp_admin, prize_admin))
-        except Exception:
-            messagebox.showerror('Ошибка', 'Произошла ошибка при обращении к базе данных')
+            messagebox.showinfo('Информирование', 'Администратор был добавлен')
+        except Exception as e:
+            messagebox.showerror('Ошибка', f'Произошла ошибка при обращении к базе данных {e}')
 
 
 def bd_del_admin(id_admin: int):

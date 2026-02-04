@@ -115,12 +115,13 @@ def bd_completion_order(id: int):
             cursor.execute('''CREATE TABLE IF NOT EXISTS completion_order_table(vin TEXT, services TEXT);''')
             if row:
                 cursor.execute(f'''UPDATE completion_order_table SET services 
-                = services || " " || ? WHERE vin = ?;''', (new_service, vin))
+                = services || " " || ? WHERE vin = ?;''', (new_service, vin)) # Если заказы уже были на этот номер
+                # то заказы только обновяться при помощи конкотенации
             else:
                 cursor.execute('''INSERT INTO completion_order_table(vin, services)
-                VALUES (?,?);''', (vin, new_service))
+                VALUES (?,?);''', (vin, new_service)) # если же вин номера такого не было то он добавиться в бд
         except Exception:
-            messagebox.showerror('Ошибка', 'Произошла ошибка при ..')
+            messagebox.showerror('Ошибка', 'Произошла ошибка при попытке обращения к базе данных')
             return
 
     with sql.connect('sql/active_order_table.db') as con:

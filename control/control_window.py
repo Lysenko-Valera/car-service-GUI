@@ -1,7 +1,7 @@
 from tkinter import Label, Button, Toplevel
 from tkinter.constants import CENTER
-from main import control as bcntr
-import control as bd_bctr
+import control.button_control as bcntr
+import control.db_button_control as bd_bctr
 import diagram.profit_diagram as profit_diagram
 from PIL import Image, ImageTk
 
@@ -16,7 +16,7 @@ def agree_next_month():
     label = Label(agree_window, text='Окно соглашения. \n Нажмите на кнопку <перейти>, \n если хотите перейти на следующий месяц',
                   font=('Arial', 20, 'bold'), bg='orange', fg='white').pack()
     button_agree = Button(agree_window, command=bd_bctr.agree_next_month, text='Согласен',
-                          font=('Arial', 30, 'bold'), bg='red', fg='white', width=14)
+                          font=('Arial', 30, 'bold'), bg='red', fg='black', width=14)
     button_agree.pack()
 
 

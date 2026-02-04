@@ -1,8 +1,8 @@
 from tkinter import Button, Label, Entry, Toplevel
 from tkinter.scrolledtext import ScrolledText
-from main import control as bca
-import control as bdb
-import control as bmc
+import control.button_control_admin as bca
+import control.db_button_control as bdb
+import control.button_control_mechanic as bmc
 import diagram.mechanic_diagram as chart_mech
 
 
@@ -37,7 +37,7 @@ def del_service():
         del_service = entry_del_service.get()
         bdb.bd_del_service(int(del_service))
     button_del_confirm_service = Button(window_del_service, text='Удалить', command=collecting_del_service,
-                                        font=('Arial', 25, 'bold'), bg='red', fg='white').pack()
+                                        font=('Arial', 25, 'bold'), bg='red', fg='black').pack()
 
 
 def add_service():
@@ -79,7 +79,7 @@ def add_service():
         bdb.bd_add_service(int(id_service), str(new_service), int(price_service), float(time_service), int(cost_price_service), int(profit_sevice))
 
     button_add_service = Button(window_add_service, text='Добавить', command=service_add_help,
-                                font=('Arial', 25, 'bold'), bg='lime', fg='white').pack()
+                                font=('Arial', 25, 'bold'), bg='lime', fg='black').pack()
 
 
 def mechanic_see():
@@ -91,7 +91,7 @@ def mechanic_see():
 
     label = Label(window_mechanic_see, text='Информация о механниках', font=('Arial', 25, 'bold'), bg='orange', fg='white').pack()
     button_see_graph_mechanic = Button(window_mechanic_see, text='Просмотреть успех', command=chart_mech.mechanic_chart,
-                                       font=('Arial', 25, 'bold'), bg='lime', fg='white').pack()
+                                       font=('Arial', 25, 'bold'), bg='lime', fg='black').pack()
     scroll_text = ScrolledText(window_mechanic_see, width=100, height=100, font=('Courier New', 20, 'bold'), bg='black', fg='white')
     scroll_text.insert('1.0', bdb.bd_mechanic())
     scroll_text.configure(state='disabled') #Запрещаем заменять текст
@@ -124,14 +124,14 @@ def del_or_add_work():
     label = Label(window_add_del_work, text='Выберите кнопку кого хотите\n удалить/добавить', font=('Arial', 25, 'bold'), bg='orange', fg='white').pack()
     label = Label(window_add_del_work, text='Механники', font=('Arial', 20, 'bold'), bg='black', fg='white').pack()
     button_add_mechanic = Button(window_add_del_work, width=10, text='Добавить', command=bmc.button_add_mechanic,
-                                 font=('Arial', 35, 'bold'), bg='lime', fg='white').pack()
+                                 font=('Arial', 35, 'bold'), bg='lime', fg='black').pack()
     button_del_mechanic = Button(window_add_del_work, width=10, text='Удалить', command=bmc.button_del_mechanic,
-                                 font=('Arial', 35, 'bold'), bg='red', fg='white').pack()
+                                 font=('Arial', 35, 'bold'), bg='red', fg='black').pack()
     label = Label(window_add_del_work, text='Администраторы', font=('Arial', 20, 'bold'), bg='black', fg='white').pack()
     button_add_admin = Button(window_add_del_work, width=10, text='Добавить', command=bca.button_add_admin,
-                                 font=('Arial', 35, 'bold'), bg='lime', fg='white').pack()
+                                 font=('Arial', 35, 'bold'), bg='lime', fg='black').pack()
     button_del_admin = Button(window_add_del_work, width=10, text='Удалить', command=bca.button_del_admin,
-                                 font=('Arial', 35, 'bold'), bg='red', fg='white').pack()
+                                 font=('Arial', 35, 'bold'), bg='red', fg='black').pack()
 
 
 
