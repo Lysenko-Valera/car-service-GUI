@@ -1,5 +1,5 @@
 from tkinter import Toplevel, Label, Button, Entry
-import control.bd_button_control as bdb
+import control as bdb
 
 
 def button_add_mechanic():

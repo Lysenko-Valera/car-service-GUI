@@ -1,8 +1,8 @@
 from tkinter import Button, Label, Entry, Toplevel
 from tkinter.scrolledtext import ScrolledText
-import control.button_control_admin as bca
-import control.bd_button_control as bdb
-import control.button_control_mechanic as bmc
+from main import control as bca
+import control as bdb
+import control as bmc
 import diagram.mechanic_diagram as chart_mech
 
 

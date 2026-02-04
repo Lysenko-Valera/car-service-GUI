@@ -1,6 +1,4 @@
 import matplotlib.pyplot as plt
-import sqlite3 as sql
-from tkinter import messagebox
 import diagram.profit_diagram_bd as profit_bd
 
 

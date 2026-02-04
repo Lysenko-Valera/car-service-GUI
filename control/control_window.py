@@ -1,8 +1,9 @@
-from tkinter import Label, Button, Toplevel, Tk
+from tkinter import Label, Button, Toplevel
 from tkinter.constants import CENTER
-import control.button_control as bcntr
-import control.bd_button_control as bd_bctr
+from main import control as bcntr
+import control as bd_bctr
 import diagram.profit_diagram as profit_diagram
+from PIL import Image, ImageTk
 
 
 def agree_next_month():
@@ -19,7 +20,7 @@ def agree_next_month():
     button_agree.pack()
 
 
-window_cntr = Tk()
+window_cntr = Toplevel()
 window_cntr.title('Окно контроля')
 window_cntr.geometry('1400x800')
 window_cntr.resizable(False,False)
@@ -32,6 +33,13 @@ def button_help_cntr(text, command:None):
 
 
 def control_window():
+    img = Image.open('img_and_gif/shester.webp')
+    img = img.resize((1400, 800))
+    img_photo = ImageTk.PhotoImage(img)
+
+    img_label = Label(window_cntr, image=img_photo)
+    img_label.place(x=0, y=0)
+
     label = Label(window_cntr, text='Добро пожаловать в окно контроля', font=('Arial', 35, 'bold'), bg='orange', fg='white').pack()
 
     label = Label(window_cntr, text='Услуги и цены: ', font=('Arial', 25, 'bold'), bg='black', fg='white').place(x=0, y=47)
@@ -60,4 +68,5 @@ def control_window():
     button_del_service = button_help_cntr('Выплаты рабочим', profit_diagram.pay_workers_diagram).place(x=1095, y=330)
 
 
+    window_cntr.mainloop()
 

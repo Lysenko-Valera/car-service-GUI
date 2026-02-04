@@ -1,6 +1,6 @@
 from tkinter import Button, Label, Entry, Toplevel
 from tkinter.scrolledtext import ScrolledText
-import admin.bd_admin_window as bdaw
+import admin.db_admin_window as bdaw
 from admin.create_car.create_car import Car
 
 
@@ -50,7 +50,7 @@ def create_order():
     window_order.geometry('1200x800')
     window_order.resizable(width=False, height=False)
 
-    def order_help(txt: str):
+    def order_label_generator(txt: str):
         label = Label(window_order, text=txt, font=('Arial', 18, 'bold'), bg='black', fg='white').pack()
         entry = Entry(window_order, font=('Arial', 20), width=25, justify='left')
         entry.pack()
@@ -59,17 +59,17 @@ def create_order():
     label = Label(window_order, text='Создание заказа',
                      font=('Arial', 25, 'bold'), bg='orange', fg='black').pack()
 
-    id_order = order_help('Введите id заказа')
-    brand_auto = order_help('Введите брэнд авто:')
-    model_auto = order_help('Введите модель авто:')
-    year_auto = order_help('Введите год авто:')
-    mileage_auto = order_help('Введите пробег авто:')
-    vin_auto = order_help('Введите вин номер авто типа [1_][**********][6_] где _-цифра, а *-цифра|буква":')
-    fuel_type_auto = order_help('Введите тип топлива 1 - бензин, 2 - дизель, 3 - газ:')
-    engine_capacity_auto = order_help('Введите объем двигателя авто вещественным числом:')
-    gas_tank_capacity_auto = order_help('Введите объем бензобака авто:')
-    types_services_auto = order_help('id видов услуг через пробел')
-    id_mechanic_order = order_help('Введите id механника')
+    id_order = order_label_generator('Введите id заказа')
+    brand_auto = order_label_generator('Введите брэнд авто:')
+    model_auto = order_label_generator('Введите модель авто:')
+    year_auto = order_label_generator('Введите год авто:')
+    mileage_auto = order_label_generator('Введите пробег авто:')
+    vin_auto = order_label_generator('Введите вин номер авто типа [1_][**********][6_] где _-цифра, а *-цифра|буква":')
+    fuel_type_auto = order_label_generator('Введите тип топлива 1 - бензин, 2 - дизель, 3 - газ:')
+    engine_capacity_auto = order_label_generator('Введите объем двигателя авто вещественным числом:')
+    gas_tank_capacity_auto = order_label_generator('Введите объем бензобака авто:')
+    types_services_auto = order_label_generator('id видов услуг через пробел')
+    id_mechanic_order = order_label_generator('Введите id механника')
 
     def help_order_create():
         id = id_order.get()

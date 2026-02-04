@@ -3,6 +3,7 @@ from random import choice
 from tkinter import messagebox
 import sqlite3 as sql
 from PIL import ImageTk, Image
+import os
 
 
 window_entry = Tk() #создаем окно входа
@@ -14,8 +15,8 @@ img = Image.open('img_and_gif/key_logo_entry_window.JPG')
 img = img.resize((750, 700))
 img_photo = ImageTk.PhotoImage(img)
 
-img_lablel = Label(window_entry, image=img_photo)
-img_lablel.place(x=0, y=0)
+img_label = Label(window_entry, image=img_photo)
+img_label.place(x=0, y=0)
 
 label = Label(window_entry, text='Доброго пожаловать в систему.',
                  font=('Arial', 35, 'bold'), bg='orange').pack()
@@ -112,6 +113,18 @@ def check_password():
 button_entry = Button(window_entry, text='Войти', command=check_password, font=('Arial', 50, 'bold'), bg='lime')
 button_entry.pack()
 
+file_in_sql = ['active_order_table.db', 'admin_table.db', 'completion_order_table.db', 'mechanic_table.db',
+               'month_data.db', 'service_table.db']
 
-if __name__ == '__main__':
-    window_entry.mainloop()
+if os.path.isdir(''):
+    for i in file_in_sql:
+        if i in os.listdir(''):
+            pass
+        else:
+            open('sql/' + i, 'w').close()
+    if __name__ == '__main__':
+        window_entry.mainloop()
+else:
+    os.mkdir('')
+    for i in file_in_sql:
+        open('sql/' + i, 'w').close()
